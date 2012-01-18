@@ -87,8 +87,8 @@ add_shortcode("AB-MAP", "ab_shortcode");
   ============================================================================== */
 
 function ab_set_options() {
-    add_option('latitude', '-33.92487', 'Default Latitude');
-    add_option('longitude', '18.42406', 'Default Longitude');
+    add_option('latitude', '9.93123', 'Default Latitude');
+    add_option('longitude', '76.26730', 'Default Longitude');
     add_option('language', 'en', 'Default Longitude');
     add_option('map_width', '500', 'Default Longitude');
     add_option('map_height', '300', 'Default Longitude');
@@ -137,10 +137,10 @@ function ab_options_page() { ?>
 }
 
 function ab_update_options() {
-    $lat = isset($_REQUEST['lat']) ? $_REQUEST['lat'] != "" ? $_REQUEST['lat'] : -33.92487  : -33.92487;
+    $lat = isset($_REQUEST['lat']) ? $_REQUEST['lat'] != "" ? $_REQUEST['lat'] : 9.93123  : 9.93123;
     update_option('latitude', $lat);
 
-    $long = isset($_REQUEST['long']) ? $_REQUEST['long'] != "" ? $_REQUEST['long'] : 18.42406  : 18.42406;
+    $long = isset($_REQUEST['long']) ? $_REQUEST['long'] != "" ? $_REQUEST['long'] : 76.26730  : 76.26730;
     update_option('longitude', $long);
 
     $lang = isset($_REQUEST['lang']) ? $_REQUEST['lang'] != "" ? $_REQUEST['lang'] : 'en'  : 'en';

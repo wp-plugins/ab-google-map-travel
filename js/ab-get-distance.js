@@ -5,7 +5,7 @@ var directionDisplay;
 
   function initialize(lat,lng) {
     directionsDisplay = new google.maps.DirectionsRenderer();
-    //var location = new google.maps.LatLng(-33.92487, 18.42406);
+    //var location = new google.maps.LatLng(9.93123, 76.26730);
 	var location = new google.maps.LatLng(lat, lng);
     
     var zm =  parseInt(document.getElementById('map_zoom').value);
