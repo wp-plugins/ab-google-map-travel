@@ -14,7 +14,7 @@ You can get the results of the plugin in any language supported by the google di
 
 <p>Created By: Aboobacker Omar</p>
 <p>Email : mail@aboobacker.com</p>
-<p>Website: http://aboobacker/</p>
+<p>Website: http://aboobacker.com/</p>
 
 == Installation ==
 
