@@ -329,7 +329,7 @@ function ab_print_options_form() {
 }
 
 function add_menu_item() {
-    add_menu_page('AB-MAP Options', 'Google Map Travel', 'add_users','ab_map_options', 'ab_options_page', plugins_url('google-map-travel/images/icon.png', __FILE__));
+    add_menu_page('AB-MAP Options', 'Google Map Travel', 'add_users','ab_map_options', 'ab_options_page', plugins_url('/images/icon.png', __FILE__));
 }
 
 add_action('admin_menu', 'add_menu_item');
