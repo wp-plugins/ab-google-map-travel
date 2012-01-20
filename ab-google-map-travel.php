@@ -58,6 +58,7 @@ function abdistance_calculator() {
 <td>To: </td><td><input type="text" name="place_to" class="txt" /></td>
 <td><input type="button" value="Get Quote" onclick="get_distance(this.form)"/>
 <input type="hidden" value="'. get_option('zoom').'" id="map_zoom"/>
+<input type="hidden" value="'. get_option('curr_format').'" id="curr_format"/>
 </td>
 </tr>
 </table>
@@ -97,6 +98,8 @@ function ab_set_options() {
     add_option('more_five_fare', '2.5', 'More Five');
     add_option('reg_less_five_fare', '2', 'Reg Less Five');
     add_option('reg_more_five_fare', '1.5', 'Reg More Five');
+	
+	add_option('curr_format', '$', 'Currency format');
 }
 
 function ab_unset_options() {
@@ -110,6 +113,8 @@ function ab_unset_options() {
     delete_option('more_five_fare');
     delete_option('reg_less_five_fare');
     delete_option('reg_more_five_fare');
+	
+	delete_option('curr_format');
 }
 
 register_activation_hook(__FILE__, 'ab_set_options');
@@ -166,6 +171,10 @@ function ab_update_options() {
     
     $reg_more_five_fare = isset($_REQUEST['reg_more_five_fare']) ? $_REQUEST['reg_more_five_fare'] != "" ? $_REQUEST['reg_more_five_fare'] : 1.5  : 1.5;
     update_option('reg_more_five_fare', $reg_more_five_fare);
+	
+	
+	$curr_format = isset($_REQUEST['curr_format']) ? $_REQUEST['curr_format'] != "" ? $_REQUEST['curr_format'] : '$'  : '$';
+    update_option('curr_format', $curr_format);
 
     echo '<div id="message" class="updated fade"><p><strong>Options Saved...</strong></p></div>';
 }
@@ -181,6 +190,8 @@ function ab_print_options_form() {
     $default_more_five_fare = get_option('more_five_fare');
     $default_reg_less_five_fare = get_option('reg_less_five_fare');
     $default_reg_more_five_fare = get_option('reg_more_five_fare');
+	
+	$default_curr_format = get_option('curr_format');
     
     ?>
     <form method="post">
@@ -315,6 +326,11 @@ function ab_print_options_form() {
             <tr>
                 <td><label for="more_five_fare">Charge: >5 kms: </label></td>
                 <td><input type="text" name="more_five_fare" size="30" value="<?php echo $default_more_five_fare; ?>" /> <small>Default charge for more than 5kms</small></td>
+            </tr>
+            
+            <tr>
+                <td><label for="curr_format">Currency format: </label></td>
+                <td><input type="text" name="curr_format" size="30" value="<?php echo $default_curr_format; ?>" /> <small>Default currency format</small></td>
             </tr>
             
             <tr>

@@ -48,6 +48,8 @@ var directionDisplay;
 
                 less_five =  document.getElementById('less_five').value;
                 more_five =  document.getElementById('more_five').value;
+				
+				curr_format =  document.getElementById('curr_format').value;
                 
                 if (calc_distance <= 5010) {
                     amount_to_pay = calc_distance * less_five;
@@ -61,8 +63,8 @@ var directionDisplay;
 		document.getElementById('distance').innerHTML = '<div class="distance-inner">'+ "The distance between <em>"+from+"</em> and <em>"+to+"</em>: <strong>"+distance+"</strong>\n\
                 <br/>\n\
                 Time take to travel: <strong>"+time_taken+"</strong><br/>\n\
-                <br/><strong>Charge to be paid: $"+rounded_amount_to_pay+"</strong>\n\
-                <br/><em>Charge rate: <5kms: $"+less_five+", >5kms: $"+more_five+" </em></div>";
+                <br/><strong>Charge to be paid: "+curr_format+rounded_amount_to_pay+"</strong>\n\
+                <br/><em>Charge rate: <5kms: "+curr_format+less_five+", >5kms: "+curr_format+more_five+" </em></div>";
                 
 		steps = "<ul>";
 		var myRoute = response.routes[0].legs[0];
