@@ -41,24 +41,24 @@ var directionDisplay;
       if (status == google.maps.DirectionsStatus.OK) {
         directionsDisplay.setDirections(response);
 
-		distance = response.routes[0].legs[0].distance.text;
-		time_taken = response.routes[0].legs[0].duration.text;
+		var distance = response.routes[0].legs[0].distance.text;
+		var time_taken = response.routes[0].legs[0].duration.text;
                 
-                calc_distance = response.routes[0].legs[0].distance.value;
+                var calc_distance = response.routes[0].legs[0].distance.value;
 
-                less_five =  document.getElementById('less_five').value;
-                more_five =  document.getElementById('more_five').value;
+                var less_five =  document.getElementById('less_five').value;
+                var more_five =  document.getElementById('more_five').value;
 				
-				curr_format =  document.getElementById('curr_format').value;
+				var curr_format =  document.getElementById('curr_format').value;
                 
                 if (calc_distance <= 5010) {
-                    amount_to_pay = calc_distance * less_five;
+                    var amount_to_pay = calc_distance * less_five;
                 }
                 else {
-                    amount_to_pay = calc_distance * more_five;
+                    var amount_to_pay = calc_distance * more_five;
                 }
                 
-                rounded_amount_to_pay = round(amount_to_pay/1000,2); 
+                var rounded_amount_to_pay = round(amount_to_pay/1000,2); 
 
 		document.getElementById('distance').innerHTML = '<div class="distance-inner">'+ "The distance between <em>"+from+"</em> and <em>"+to+"</em>: <strong>"+distance+"</strong>\n\
                 <br/>\n\
@@ -66,7 +66,7 @@ var directionDisplay;
                 <br/><strong>Charge to be paid: "+curr_format+rounded_amount_to_pay+"</strong>\n\
                 <br/><em>Charge rate: <5kms: "+curr_format+less_five+", >5kms: "+curr_format+more_five+" </em></div>";
                 
-		steps = "<ul>";
+		var steps = "<ul>";
 		var myRoute = response.routes[0].legs[0];
 		for (var i = 0; i < myRoute.steps.length; i++) {
 		 steps += "<li>" + myRoute.steps[i].instructions + "</li>";
