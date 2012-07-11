@@ -13,6 +13,10 @@ This plugin will display the distance & driving direction between two points on 
 If you are a taxi provider, make your customers allow to calculate their travel distance from source to destination, fare with different charges for registered and non-registred members.
 You can get the results of the plugin in any language supported by the google direction.
 
+<strong>Usage</strong>
+Add the following shortcode in the page:
+<code>[AB-MAP]</code>
+
 <p>Created By: Aboobacker Omar</p>
 <p>Email : mail@aboobacker.com</p>
 <p>Website: http://www.aboobacker.com/</p>
