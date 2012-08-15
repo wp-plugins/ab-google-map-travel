@@ -2,7 +2,7 @@
 /*
   Plugin Name: AB Google Map Travel (AB-MAP)
   Plugin URI: http://aboobacker.com
-  Version: 2.0
+  Version: 2.1
   Author: Aboobacker Omar
   Author URI: http://aboobacker.com
   Description: If you are a taxi provider, make your customers allow to calculate their travel distance, fare with different charges for registered and non-registered members.

@@ -29,7 +29,7 @@ var directionDisplay;
         origin:start,
         destination:end,
         travelMode: google.maps.DirectionsTravelMode.DRIVING,
-	unitSystem: google.maps.DirectionsUnitSystem.IMPERIAL
+	unitSystem: google.maps.DirectionsUnitSystem.METRIC
     };
     // function to round the decimal digits eg: round(123.456,2); gives 123.45
     function round(number,X) {
