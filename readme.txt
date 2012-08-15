@@ -3,7 +3,7 @@ Contributors: Aboobacker P Omar
 Donate link: http://aboobacker.com/
 Tags: Google Maps, Distance Calculator, Google Maps, Calculate Distance, Driving Directions, Google Travel, AB Google Map Travel, Abooze Map Plugin
 Requires at least: 3.0
-Tested up to: 3.3.1
+Tested up to: 3.4.1
 Stable tag: 2.0
 
 This plugin will display the distance & driving direction between two points on earth.
