@@ -19,7 +19,7 @@ Add the following shortcode in the page:
 
 <p>Created By: Aboobacker Omar</p>
 <p>Email : mail@aboobacker.com</p>
-<p>Website: http://www.aboobacker.com/</p>
+<p>Demo: http://www.aboobacker.com/ab-google-map-travel/</p>
 
 == Installation ==
 
