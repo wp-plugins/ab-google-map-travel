@@ -73,7 +73,6 @@ function abdistance_calculator() {
 </table>
 </form>
  <div id="distance"></div><!-- #distance -->
- <div id="distance2"></div>
  <div id="steps"></div><!-- #steps -->
 </div><!-- #abgdc-wrap -->';?>
 
