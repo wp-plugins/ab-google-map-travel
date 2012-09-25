@@ -10,7 +10,7 @@ This plugin will display the distance & driving direction between two points on 
 
 == Description ==
 
-If you are a taxi provider, make your customers allow to calculate their travel distance from source to destination, fare with different charges for registered and non-registred members.
+If you are a taxi provider, make your customers allow to calculate their travel distance from source to destination, fare with different charges for day and night travels.
 You can get the results of the plugin in any language supported by the google direction.
 
 <strong>Usage</strong>

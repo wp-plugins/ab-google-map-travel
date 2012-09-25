@@ -5,7 +5,7 @@
   Version: 3.0
   Author: Aboobacker P Ummer
   Author URI: http://aboobacker.com
-  Description: If you are a taxi provider, make your customers allow to calculate their travel distance, fare with different charges for registered and non-registered members.
+  Description: If you are a taxi provider, make your customers allow to calculate their travel distance, fare with different charges for day and night travels.
   Tags: Google Maps, Distance Calculator, Google Maps, Calculate Distance, Driving Directions, Google Travel, AB Google Map Travel, Abooze Map Plugin
  */
 
