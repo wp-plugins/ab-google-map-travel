@@ -98,9 +98,7 @@ var directionDisplay;
 		document.getElementById('distance').innerHTML = '<span class="gdc-error">Google Map could not be created for the entered parameters. Please be specific while providing the destination location.</span>';
 	  }
     });
-	
-	
-	
+
   }
 
-//window.onload=function(){initialize();}
+window.onload=function(){initialize();}
