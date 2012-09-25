@@ -2,8 +2,8 @@
 /*
   Plugin Name: AB Google Map Travel (AB-MAP)
   Plugin URI: http://aboobacker.com
-  Version: 2.1
-  Author: Aboobacker Omar
+  Version: 3.0
+  Author: Aboobacker P Ummer
   Author URI: http://aboobacker.com
   Description: If you are a taxi provider, make your customers allow to calculate their travel distance, fare with different charges for registered and non-registered members.
   Tags: Google Maps, Distance Calculator, Google Maps, Calculate Distance, Driving Directions, Google Travel, AB Google Map Travel, Abooze Map Plugin
@@ -45,6 +45,7 @@ function abdistance_calculator() {
      from = form.place_from.value;
      to = form.place_to.value;
      calcRoute(from,to);
+	 calcRoute2(from,to);
  }
  
 </script>
@@ -56,18 +57,33 @@ function abdistance_calculator() {
 <tr>
 <td>From: </td><td><input type="text" name="place_from" class="txt" /></td>
 <td>To: </td><td><input type="text" name="place_to" class="txt" /></td>
+<td>Travel Time: 
+
+<input type="radio" id="day_time" name="travel_time" value="day" checked="checked" /> Day 
+<input type="radio" id="night_time" name="travel_time" value="night" /> Night 
+
+</td>
+<br />
 <td><input type="button" value="Get Quote" onclick="get_distance(this.form)"/>
 <input type="hidden" value="'. get_option('zoom').'" id="map_zoom"/>
 <input type="hidden" value="'. get_option('curr_format').'" id="curr_format"/>
+
 </td>
 </tr>
 </table>
 </form>
  <div id="distance"></div><!-- #distance -->
+ <div id="distance2"></div>
  <div id="steps"></div><!-- #steps -->
 </div><!-- #abgdc-wrap -->';?>
-<input type="hidden" value="<?php if ( is_user_logged_in() ){echo get_option('reg_less_five_fare');} else{echo get_option('less_five_fare');} ?>" id="less_five"/>
-<input type="hidden" value="<?php if ( is_user_logged_in() ){echo get_option('reg_more_five_fare');} else{echo get_option('more_five_fare');} ?>" id="more_five"/>
+
+<input type="hidden" value="<?php echo get_option('day_more_five_fare');?>" id="day_more_five" />
+<input type="hidden" value="<?php echo get_option('day_less_five_fare');?>" id="day_less_five" />
+
+<input type="hidden" value="<?php echo get_option('more_five_fare');?>" id="night_more_five" />
+<input type="hidden" value="<?php echo get_option('less_five_fare');?>" id="night_less_five" />
+
+
 <?php
     return $result;
 }
@@ -96,8 +112,8 @@ function ab_set_options() {
     add_option('zoom', '7', 'Default Zoom');
     add_option('less_five_fare', '3', 'Less Five');
     add_option('more_five_fare', '2.5', 'More Five');
-    add_option('reg_less_five_fare', '2', 'Reg Less Five');
-    add_option('reg_more_five_fare', '1.5', 'Reg More Five');
+    add_option('day_less_five_fare', '2', 'Reg Less Five');
+    add_option('day_more_five_fare', '1.5', 'Reg More Five');
 	
 	add_option('curr_format', '$', 'Currency format');
 }
@@ -111,9 +127,9 @@ function ab_unset_options() {
     delete_option('zoom');
     delete_option('less_five_fare');
     delete_option('more_five_fare');
-    delete_option('reg_less_five_fare');
-    delete_option('reg_more_five_fare');
-	
+    delete_option('day_less_five_fare');
+    delete_option('day_more_five_fare');
+
 	delete_option('curr_format');
 }
 
@@ -166,13 +182,12 @@ function ab_update_options() {
     $more_five_fare = isset($_REQUEST['more_five_fare']) ? $_REQUEST['more_five_fare'] != "" ? $_REQUEST['more_five_fare'] : 2.5  : 2.5;
     update_option('more_five_fare', $more_five_fare);
 
-    $reg_less_five_fare = isset($_REQUEST['reg_less_five_fare']) ? $_REQUEST['reg_less_five_fare'] != "" ? $_REQUEST['reg_less_five_fare'] : 2  : 2;
-    update_option('reg_less_five_fare', $reg_less_five_fare);
+    $day_less_five_fare = isset($_REQUEST['day_less_five_fare']) ? $_REQUEST['day_less_five_fare'] != "" ? $_REQUEST['day_less_five_fare'] : 2  : 2;
+    update_option('day_less_five_fare', $day_less_five_fare);
     
-    $reg_more_five_fare = isset($_REQUEST['reg_more_five_fare']) ? $_REQUEST['reg_more_five_fare'] != "" ? $_REQUEST['reg_more_five_fare'] : 1.5  : 1.5;
-    update_option('reg_more_five_fare', $reg_more_five_fare);
-	
-	
+    $day_more_five_fare = isset($_REQUEST['day_more_five_fare']) ? $_REQUEST['day_more_five_fare'] != "" ? $_REQUEST['day_more_five_fare'] : 1.5  : 1.5;
+    update_option('day_more_five_fare', $day_more_five_fare);
+
 	$curr_format = isset($_REQUEST['curr_format']) ? $_REQUEST['curr_format'] != "" ? $_REQUEST['curr_format'] : '$'  : '$';
     update_option('curr_format', $curr_format);
 
@@ -188,9 +203,9 @@ function ab_print_options_form() {
     $default_zoom = get_option('zoom');
     $default_less_five_fare = get_option('less_five_fare');
     $default_more_five_fare = get_option('more_five_fare');
-    $default_reg_less_five_fare = get_option('reg_less_five_fare');
-    $default_reg_more_five_fare = get_option('reg_more_five_fare');
-	
+    $default_day_less_five_fare = get_option('day_less_five_fare');
+    $default_day_more_five_fare = get_option('day_more_five_fare');
+
 	$default_curr_format = get_option('curr_format');
     
     ?>
@@ -292,17 +307,17 @@ function ab_print_options_form() {
         <table class="widefat" style="width: 600px;" >
             <thead>
                 <tr>
-                    <th colspan="2"><strong>Charge: Registered members.</strong> To configure the travel charges update the following values</th>
+                    <th colspan="2"><strong>Day Time Charge: </strong> To configure the travel charges update the following values</th>
                 </tr>
             </thead>
             <tbody>
             <tr>
-                <td><label for="reg_less_five_fare">Charge: <5 kms: </label></td>
-                <td><input type="text" name="reg_less_five_fare" size="30" value="<?php echo $default_reg_less_five_fare; ?>" /> <small>Default charge for less than 5kms</small></td>
+                <td><label for="day_less_five_fare">Charge: <5 kms: </label></td>
+                <td><input type="text" name="day_less_five_fare" size="30" value="<?php echo $default_day_less_five_fare; ?>" /> <small>Default charge for less than 5kms (Day time)</small></td>
             </tr>
             <tr>
-                <td><label for="reg_more_five_fare">Charge: >5 kms: </label></td>
-                <td><input type="text" name="reg_more_five_fare" size="30" value="<?php echo $default_reg_more_five_fare; ?>" /> <small>Default charge for more than 5kms</small></td>
+                <td><label for="day_more_five_fare">Charge: >5 kms: </label></td>
+                <td><input type="text" name="day_more_five_fare" size="30" value="<?php echo $default_day_more_five_fare; ?>" /> <small>Default charge for more than 5kms (Day time)</small></td>
             </tr>
             </tbody>
         </table>
@@ -310,7 +325,7 @@ function ab_print_options_form() {
         <table class="widefat" style="width: 600px;" >
             <thead>
                 <tr>
-                    <th colspan="2"><strong>Charge: Non-registered members.</strong> To configure the travel charges update the following values</th>
+                    <th colspan="2"><strong>Night Time Charge: </strong> To configure the travel charges update the following values</th>
                 </tr>
             </thead>
             <tfoot>
@@ -321,18 +336,18 @@ function ab_print_options_form() {
             <tbody>
             <tr>
                 <td><label for="less_five_fare">Charge: <5 kms: </label></td>
-                <td><input type="text" name="less_five_fare" size="30" value="<?php echo $default_less_five_fare; ?>" /> <small>Default charge for less than 5kms</small></td>
+                <td><input type="text" name="less_five_fare" size="30" value="<?php echo $default_less_five_fare; ?>" /> <small>Default charge for less than 5kms (Night time)</small></td>
             </tr>
             <tr>
                 <td><label for="more_five_fare">Charge: >5 kms: </label></td>
-                <td><input type="text" name="more_five_fare" size="30" value="<?php echo $default_more_five_fare; ?>" /> <small>Default charge for more than 5kms</small></td>
+                <td><input type="text" name="more_five_fare" size="30" value="<?php echo $default_more_five_fare; ?>" /> <small>Default charge for more than 5kms (Night time)</small></td>
             </tr>
-            
+            <tr><td></td><td></td></tr>
             <tr>
                 <td><label for="curr_format">Currency format: </label></td>
                 <td><input type="text" name="curr_format" size="30" value="<?php echo $default_curr_format; ?>" /> <small>Default currency format</small></td>
             </tr>
-            
+
             <tr>
                 <td></td>
                 <td><input class="button-primary" type="submit" name="submit" value="Update Settings"/></td>
