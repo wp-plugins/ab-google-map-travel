@@ -101,4 +101,4 @@ var directionDisplay;
 
   }
 
-window.onload=function(){initialize();}
+//window.onload=function(){initialize();}
