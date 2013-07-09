@@ -39,7 +39,7 @@ Add the following shortcode in the page:
 
 == Screenshots ==
 
-Will be updated soon.
+Coming soon.
 
 == Changelog ==
 
