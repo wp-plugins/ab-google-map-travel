@@ -2,7 +2,7 @@
 /*
   Plugin Name: AB Google Map Travel (AB-MAP)
   Plugin URI: http://aboobacker.com
-  Version: 3.1
+  Version: 3.2
   Author: Aboobacker P Ummer
   Author URI: http://aboobacker.com
   Description: If you are a taxi provider, make your customers allow to calculate their travel distance, fare with different charges for day and night travels.

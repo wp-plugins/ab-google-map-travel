@@ -56,6 +56,6 @@
 .steps-inner ul li{
 	list-style:decimal;
 }
-.gdc-error
+.gdc-error {
 	color:#ff0000;
 }

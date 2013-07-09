@@ -79,7 +79,7 @@ var directionDisplay;
 				
                 var rounded_amount_to_pay = round(amount_to_pay/1000,2); 
 
-		document.getElementById('distance').innerHTML = '<div class="distance-inner">'+ "The distance between <em>"+from+"</em> and <em>"+to+"</em>: <strong>"+distance+" / "+mi+ "mi</strong>\n\
+		document.getElementById('distance').innerHTML = '<div class="distance-inner">'+ "The distance between <em>"+from+"</em> and <em>"+to+"</em>: <strong>"+distance+" / "+mi+ " mi</strong>\n\
                 <br/>\n\
                 Time take to travel: <strong>"+time_taken+"</strong><br/>\n\
                 <br/><strong>Charge to be paid: "+curr_format+rounded_amount_to_pay+"</strong>\n\
