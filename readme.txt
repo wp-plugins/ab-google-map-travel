@@ -1,6 +1,6 @@
 === AB Google Map Travel (AB-MAP) ===
 Contributors: Aboobacker P Ummer
-Donate link: http://aboobacker.com/
+Donate link: http://wp.aboobacker.com/
 Tags: Google Maps, Distance Calculator, Google Maps, Calculate Distance, Driving Directions, Google Travel, AB Google Map Travel, Abooze Map Plugin
 Requires at least: 3.0
 Tested up to: 3.5.2
