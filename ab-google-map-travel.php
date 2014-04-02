@@ -2,7 +2,7 @@
 /*
   Plugin Name: AB Google Map Travel (AB-MAP)
   Plugin URI: http://wp.aboobacker.com
-  Version: 3.3
+  Version: 3.4
   Author: Aboobacker P Ummer
   Author URI: http://aboobacker.com
   Description: If you are a taxi provider, make your customers allow to calculate their travel distance, fare with different charges for day and night travels.
@@ -45,7 +45,6 @@ function abdistance_calculator() {
      from = form.place_from.value;
      to = form.place_to.value;
      calcRoute(from,to);
-	 calcRoute2(from,to);
  }
  
 </script>
